@@ -45,6 +45,8 @@ public class BaseEntity {
         this.updatedBy = updatedBy;
     }
     // Implementação manual do toString()
+
+
     @Override
     public String toString() {
         return "BaseEntity{" +
@@ -54,5 +56,4 @@ public class BaseEntity {
                 ", updatedBy='" + updatedBy + '\'' +
                 '}';
     }
-
 }

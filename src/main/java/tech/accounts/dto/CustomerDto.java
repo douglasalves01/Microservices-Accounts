@@ -1,34 +1,22 @@
-package tech.accounts.entity;
+package tech.accounts.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
-@Entity
-public class Customer extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private Long customerId;
+import java.util.Objects;
+
+public class CustomerDto {
     private String name;
     private String email;
     @Column(name = "mobile_number")
     private String mobileNumber;
 
-    public Customer() {
-    }
-
-    public Customer(Long customerId, String name, String email, String mobileNumber) {
-        this.customerId = customerId;
+    public CustomerDto(String name, String email, String mobileNumber) {
         this.name = name;
         this.email = email;
         this.mobileNumber = mobileNumber;
     }
 
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public CustomerDto() {
     }
 
     public String getName() {
@@ -54,13 +42,24 @@ public class Customer extends BaseEntity {
     public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
-    // Implementação manual do toString()
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomerDto that = (CustomerDto) o;
+        return Objects.equals(name, that.name) && Objects.equals(email, that.email) && Objects.equals(mobileNumber, that.mobileNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, email, mobileNumber);
+    }
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", name='" + name + '\'' +
+        return "CustomerDto{" +
+                "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
                 '}';
