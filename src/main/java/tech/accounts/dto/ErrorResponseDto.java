@@ -9,4 +9,7 @@ public class ErrorResponseDto {
     private HttpStatus errorCode;
     private String errorMessage;
     private LocalDateTime errorTime;
+
+    public ErrorResponseDto(String description, HttpStatus httpStatus, String message, LocalDateTime now) {
+    }
 }
