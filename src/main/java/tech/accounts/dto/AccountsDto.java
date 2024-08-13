@@ -1,13 +1,19 @@
 package tech.accounts.dto;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.Objects;
 
 public class AccountsDto {
+    @NotEmpty
+    @Pattern(regexp = "($|[0-9]{10})",message = "Account number must be 10 digits")
     private Long accountNumber;
+    @NotEmpty
     @Column(name = "account_type")
     private String accountType;
+    @NotEmpty
     @Column(name = "branch_address")
     private String branchAddress;
 
