@@ -7,8 +7,20 @@ import java.util.Objects;
 public class CustomerDto {
     private String name;
     private String email;
-    @Column(name = "mobile_number")
     private String mobileNumber;
+    private AccountsDto accountsDto;
+
+    public CustomerDto(AccountsDto accountsDto) {
+        this.accountsDto = accountsDto;
+    }
+
+    public void setAccountsDto(AccountsDto accountsDto) {
+        this.accountsDto = accountsDto;
+    }
+
+    public AccountsDto getAccountsDto() {
+        return accountsDto;
+    }
 
     public CustomerDto(String name, String email, String mobileNumber) {
         this.name = name;
